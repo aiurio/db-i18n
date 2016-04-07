@@ -96,36 +96,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>build-helper-maven-plugin</artifactId>-->
-                <!--<version>1.10</version>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-scm-plugin</artifactId>-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.codehaus.plexus</groupId>-->
-                        <!--<artifactId>plexus-utils</artifactId>-->
-                        <!--<version>2.1</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.apache.maven.scm</groupId>-->
-                        <!--<artifactId>maven-scm-provider-gitexe</artifactId>-->
-                        <!--<version>1.2</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-                <!--<configuration>-->
-                    <!--<tag>${project.artifactId}-${project.version}</tag>-->
-                <!--</configuration>-->
-                <!--<version>1.0</version>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-release-plugin</artifactId>-->
-                <!--<version>2.5.3</version>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 
