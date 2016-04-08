@@ -104,6 +104,12 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
                 if( result == null ){
                     String key = toKey( new Locale(locale.getLanguage()) );
                     result = data.get( key );
+                    if( result == null ){
+                        log.warn("Failed finding translation for locale={} code={}", locale, code);
+                    }else{
+                        log.warn("Failed finding dialect translation for locale={} code={} -- but found via parent={}",
+                                locale, code, key);
+                    }
                 }
             }
 			return result;
