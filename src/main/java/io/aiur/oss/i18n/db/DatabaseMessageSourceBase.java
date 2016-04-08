@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
@@ -116,7 +117,14 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 		}
 
         public Map<String, String> getMessages(Locale locale){
-            return messages.get( toKey(locale) );
+            String lang = toKey(locale);
+            return messages.entrySet().stream()
+                    .map(entry -> {
+                        String key = entry.getKey();
+                        String value = entry.getValue().get(lang);
+                        return new HashMap.SimpleEntry<>(key, value);
+                    })
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         }
 
         private String toKey(Locale locale){
