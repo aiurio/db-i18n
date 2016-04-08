@@ -28,6 +28,10 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
         return messages.messages;
     }
 
+    public String getMessage(Locale locale, String code){
+        return messages.getMessage(code, locale);
+    }
+
 	@Override
 	protected MessageFormat resolveCode(String code, Locale locale) {
 		String msg = messages.getMessage(code, locale);
