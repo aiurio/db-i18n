@@ -24,11 +24,14 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 	@Inject @Setter @Getter
 	private JdbcTemplate jdbcTemplate;
 
+    public Map<String, Map<String, String>> getMessages(){
+        return messages.messages;
+    }
+
 	@Override
 	protected MessageFormat resolveCode(String code, Locale locale) {
 		String msg = messages.getMessage(code, locale);
 		return createMessageFormat(msg, locale);
-
 	}
 
 	@PostConstruct
