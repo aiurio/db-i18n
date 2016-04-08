@@ -32,6 +32,10 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
         return messages.getMessage(code, locale);
     }
 
+    public Map<String, String> getMessages(Locale locale){
+        return messages.getMessages(locale);
+    }
+
 	@Override
 	protected MessageFormat resolveCode(String code, Locale locale) {
 		String msg = messages.getMessage(code, locale);
@@ -104,6 +108,10 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
             }
 			return result;
 		}
+
+        public Map<String, String> getMessages(Locale locale){
+            return messages.get( toKey(locale) );
+        }
 
         private String toKey(Locale locale){
             return locale.toString().toLowerCase();
