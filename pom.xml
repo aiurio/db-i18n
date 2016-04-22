@@ -120,5 +120,6 @@
         <url>https://github.com/aiurio/db-i18n</url>
         <connection>scm:git:git://github.com/aiurio/db-i18n.git</connection>
         <developerConnection>scm:git:git@github.com:aiurio/db-i18n.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 </project>
