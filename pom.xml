@@ -6,7 +6,7 @@
 
     <groupId>io.aiur.oss</groupId>
     <artifactId>db-i18n</artifactId>
-    <version>0.1.0.BUILD-SNAPSHOT</version>
+    <version>0.1.1.BUILD-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

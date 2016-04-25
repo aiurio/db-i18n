@@ -25,6 +25,13 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 	@Inject @Setter @Getter
 	private JdbcTemplate jdbcTemplate;
 
+    @Getter @Setter
+    private boolean escapeSingleQuotes = true;
+
+    public DatabaseMessageSourceBase() {
+        this.setAlwaysUseMessageFormat(true);
+    }
+
     public Map<String, Map<String, String>> getMessages(){
         return messages.messages;
     }
@@ -77,14 +84,18 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 
 	/**
 	 * 
-	 * Messages bundle
+	 * Messages bundle; escapes single quotes (if specified)
 	 */
-	protected static final class Messages {
+	protected final class Messages {
 
 		/* <code, <locale, message>> */
 		private Map<String, Map<String, String>> messages;
 
 		public void addMessage(String code, Locale locale, String msg) {
+            if( DatabaseMessageSourceBase.this.isEscapeSingleQuotes() ) {
+                msg = msg.replace("'", "''");
+            }
+
 			if (messages == null)
 				messages = new HashMap<>();
 
