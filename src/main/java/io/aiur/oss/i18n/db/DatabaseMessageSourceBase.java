@@ -56,8 +56,8 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 		String i18nQuery = this.getI18NSqlQuery();
 
 		log.info("Initializing message source using query [{}]", i18nQuery);
-
 		this.messages = jdbcTemplate.query(i18nQuery, this::extractI18NData);
+        log.info("Initialized {} messages", messages == null || messages.messages == null ? 0 : messages.messages.size());
 	}
 
 	/**
