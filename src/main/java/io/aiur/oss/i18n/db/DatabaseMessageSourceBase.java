@@ -92,7 +92,7 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 		private Map<String, Map<String, String>> messages;
 
 		public void addMessage(String code, Locale locale, String msg) {
-            if( DatabaseMessageSourceBase.this.isEscapeSingleQuotes() ) {
+            if( DatabaseMessageSourceBase.this.isEscapeSingleQuotes() && msg != null) {
                 msg = msg.replace("'", "''");
             }
 
