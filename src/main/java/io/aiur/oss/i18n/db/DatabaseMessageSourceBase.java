@@ -33,7 +33,7 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
 
     @Getter
     @Setter
-    private Locale fallbackLocale = Locale.US;
+    private Locale fallbackLocale = Locale.ENGLISH;
 
     public DatabaseMessageSourceBase() {
         this.setAlwaysUseMessageFormat(true);
@@ -95,7 +95,7 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
         private Map<String, Map<String, String>> messages;
 
         public void addMessage(String code, Locale locale, String msg) {
-            if (DatabaseMessageSourceBase.this.isEscapeSingleQuotes()) {
+            if (DatabaseMessageSourceBase.this.isEscapeSingleQuotes() && msg != null) {
                 msg = msg.replace("'", "''");
             }
 
@@ -120,7 +120,7 @@ public abstract class DatabaseMessageSourceBase extends AbstractMessageSource {
                     String key = toKey(new Locale(locale.getLanguage()));
                     result = data.get(key);
                     if (result == null) {
-                        log.warn("Failed finding translation for locale={} code={}", locale, code);
+                        log.warn("Failed finding translation for locale={} code={} using fallback locale={}", locale, code, fallbackLocale);
                         String fallbackKey = toKey(fallbackLocale);
                         result = data.get(fallbackKey);
 
